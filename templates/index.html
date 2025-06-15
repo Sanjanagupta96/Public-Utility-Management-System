@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nagar Nigam Complaint Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: #f5f9ff;
+      color: #333;
+    }
+
+
+    header {
+      background: linear-gradient(90deg, #000fb6, #430340);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 5px;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+      background-color: hsl(315, 55%, 4%);
+    }
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+      padding: 20px;
+      color: white;
+    }
+    .hero-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #3acbf4;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+    }
+    .hero-img {
+      flex: 1;
+      max-width: 500px;
+      text-align: center;
+    }
+    .hero-img img {
+      width: 100%;
+      max-width: 400px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #0077b6;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgb(255, 255, 255);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card h3 {
+      color: #041117;
+      margin-bottom: 10px;
+    }
+    .cta {
+      background: linear-gradient(90deg, #4d024d, #34039d);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .cta a {
+      background: white;
+      color: #0077b6;
+      padding: 12px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+    .cta a:hover {
+      background: #caf0f8;
+    }
+    footer {
+      background-color: #03045e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    @media(max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+      .hero-text, .hero-img {
+        max-width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+<!-- Language Dropdown -->
+
+ 
+<div style="text-align: right; padding: 10px;">
+  <select id="language-selector" class="form-select w-auto d-inline-block">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+  </select>
+</div>
+
+
+    <h1 data-i18n = "title">Nagar Nigam Complaint Tracker</h1>
+    <nav>
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="Complain.html" data-i18n="nav_register">Register Complaint</a>
+      <a href="Trackcomplain.html" data-i18n="nav_track">Track Status</a>
+      <a href="Contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" >
+    <div class="hero-text" data-aos="fade-right">
+      <h2 data-i18n="hero_heading">Helping Citizens Track Complaints Online</h2>
+      <p data-i18n= "hero_text">
+        Say goodbye to repeated office visits! With our smart tracking system, you can register and track Nagar Nigam complaints right from your home—anytime, anywhere.
+      </p>
+    </div>
+    <div class="hero-img" data-aos="fade-left">
+      <img src="https://img.freepik.com/free-vector/customer-support-flat-illustration_23-2148889374.jpg" alt="Tracking Illustration">
+    </div>
+  </section>
+
+
+
+  <section class="section" data-aos="fade-up" data-i18n = "hero_subtext">
+    <h2 data-i18n= "about_heading">About This Platform</h2>
+    <p style="text-align:center; max-width: 800px; margin: auto;" data-i18n= "about_text">
+      This platform empowers citizens by providing an easy-to-use complaint management system for municipal services. Our mission is to bridge the communication gap between the Nagar Nigam and the public using digital innovation.
+    </p>
+  </section>
+
+  <section class="section" data-aos="fade-up" data-i18n = "hero_subtext">
+    <h2 data-i18n="features_heading">Key Features</h2>
+    <div class="cards">
+      <div class="card">
+        <h3 data-i18n="start_heading">Real-Time Status</h3>
+        <p data-i18n="start_text">Track your complaint live with status updates at every stage of the resolution process.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="photo_upload">Photo Upload</h3>
+        <p data-i18n="issue_photo">Upload a photo of the issue so authorities can better understand and respond effectively.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="gps">GPS Location</h3>
+        <p data-i18n= "fetch_location">Auto-fetch your location so complaints can be accurately mapped to your area.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="register">Quick Registration</h3>
+        <p data-i18n= "quick_register">Register your complaint within seconds with our simplified and mobile-friendly form.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n= "notification" >Instant Notifications</h3>
+        <p data-i18n= "sms">Receive SMS or Email alerts when your complaint status changes.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="admin" >Admin Dashboard</h3>
+        <p data-i18n="manage">Admin users can manage, assign, and resolve complaints through a centralized dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" data-aos="zoom-in" >
+    <h2 data-i18n="report">Start Reporting Today</h2>
+    <p data-i18n="join">Join thousands of citizens already making a difference in their neighborhoods!</p>
+    <br>
+    <a href="Complain.html" data-i18n="register_btn">Register a Complaint</a>
+  </section>
+
+ <footer data-i18n="foo">
+  © 2025 Nagar Nigam Complaint Tracker. All rights reserved. | Developed by Tech Challengers
+</footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+</body>
+</html>

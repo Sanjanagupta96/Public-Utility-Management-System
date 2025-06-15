@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Track Complaint - Nagar Nigam Complaint Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #041670, #55034f);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 5px;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .intro {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .intro h2 {
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+    .intro p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .track-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgb(89, 46, 232);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      color: white;
+    }
+
+    .track-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .track-header h2 {
+      color: #ffffff;
+    }
+
+    .complaint-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .complaint-info p {
+      font-size: 1.1rem;
+    }
+
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 40px 0;
+      padding: 0 50px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 50px;
+      right: 50px;
+      height: 4px;
+      background: #ccc;
+      z-index: 0;
+    }
+
+    /* Animated progress line */
+    .timeline::after {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 50px;
+      height: 4px;
+      background: #250000df;
+      z-index: 1;
+      animation: progressAnim 2s ease-out forwards;
+    }
+
+    @keyframes progressAnim {
+      from {
+        width: 0;
+      }
+      to {
+        width: calc((100% - 100px) * 0.6); /* 3 steps completed = 60% */
+      }
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+    .step .circle {
+      width: 50px;
+      height: 50px;
+      background: #6576f5;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      line-height: 50px;
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .step.completed .circle {
+      background: #120505;
+    }
+    .step.active .circle {
+      background: #ebeff2;
+      color: #000;
+    }
+    .step p {
+      font-size: 0.95rem;
+    }
+
+    .cards-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    .card {
+      flex: 1 1 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+    }
+    .card h3 {
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #555;
+    }
+
+    footer {
+      background-color: #03045e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .timeline {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+      }
+      .timeline::before,
+      .timeline::after {
+        display: none;
+      }
+      .step {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Language Dropdown -->
+
+ 
+<div style="text-align: right; padding: 10px;">
+  <select id="language-selector" class="form-select w-auto d-inline-block">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+  </select>
+</div>
+  <!-- Header -->
+  <header>
+   
+    <h1 data-i18n = "title">Nagar Nigam Complaint Tracker</h1>
+    <nav>
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="Complain.html" data-i18n="nav_register">Register Complaint</a>
+      <a href="Trackcomplain.html" data-i18n="nav_track">Track Status</a>
+      <a href="Contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Intro Section -->
+  <section class="intro" data-aos="fade-up">
+    <h2 data-i18n="track">Track Your Complaints with Ease</h2>
+    <p data-i18n="comp_no">No more standing in long queues or repeated visits to Nagar Nigam offices. Just enter your complaint number and track its status live. Empowering citizens with transparency and real-time updates.</p>
+  </section>
+
+  <!-- Track Complaint Section -->
+  <div class="track-section" data-aos="zoom-in">
+    <div class="track-header">
+      <h2 data-i18n="progress">Complaint Progress</h2>
+    </div>
+    <div class="complaint-info">
+      <p  data-i18n="comp_no1"><strong>Complaint No:</strong> NGN23456</p>
+      <p  data-i18n="date"><strong>Filed On:</strong> 10 May 2025</p>
+      <p  data-i18n="issue1"><strong>Issue:</strong> Garbage not collected in Sector 5</p>
+    </div>
+
+    <div class="timeline">
+      <div class="step completed">
+        <div class="circle">1</div>
+        <p  data-i18n="submit1">Submitted</p>
+      </div>
+      <div class="step completed">
+        <div class="circle">2</div>
+        <p  data-i18n="verified">Verified</p>
+      </div>
+      <div class="step active">
+        <div class="circle">3</div>
+        <p  data-i18n="assign">Assigned</p>
+      </div>
+      <div class="step">
+        <div class="circle">4</div>
+        <p  data-i18n="progress1">In Progress</p>
+      </div>
+      <div class="step">
+        <div class="circle">5</div>
+        <p  data-i18n="resolve">Resolved</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Information Cards -->
+  <section class="cards-container" data-aos="fade-up">
+    <div class="card">
+      <h3  data-i18n="comp_guide">Complaint Guidelines</h3>
+      <p  data-i18n="description1">Ensure your complaint includes a clear description, photo (if applicable), and accurate location to enable faster verification and resolution.</p>
+    </div>
+    <div class="card">
+      <h3  data-i18n="supp_help">Support & Helpline</h3>
+      <p  data-i18n="deployed">If your complaint is delayed or misrouted, call our 24/7 support number: <strong>1800-123-4567</strong> or email us at help@nagarcomplaints.gov.in.</p>
+    </div>
+    <div class="card">
+      <h3  data-i18n="policy">Citizen Grievance Policy</h3>
+      <p  data-i18n="resolved_comp">We are committed to resolving every complaint within 7 working days. Your feedback helps us improve the city’s services and response quality.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer  data-i18n="foo">
+    &copy; 2025 Nagar Nigam Complaint Tracker. All rights reserved. | Developed by Tech Challengers
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000 });</script>
+<script src="script.js"></script>
+</body>
+</html>
