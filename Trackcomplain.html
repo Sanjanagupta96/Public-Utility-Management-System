@@ -199,55 +199,64 @@
   </style>
 </head>
 <body>
+<!-- Language Dropdown -->
 
+ 
+<div style="text-align: right; padding: 10px;">
+  <select id="language-selector" class="form-select w-auto d-inline-block">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+  </select>
+</div>
   <!-- Header -->
   <header>
-    <h1>Nagar Nigam Complaint Tracker</h1>
+   
+    <h1 data-i18n = "title">Nagar Nigam Complaint Tracker</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="Complain.html">Register Complaint</a>
-      <a href="Trackcomplain.html">Track Status</a>
-      <a href="Contact.html">Contact</a>
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="Complain.html" data-i18n="nav_register">Register Complaint</a>
+      <a href="Trackcomplain.html" data-i18n="nav_track">Track Status</a>
+      <a href="Contact.html" data-i18n="nav_contact">Contact</a>
     </nav>
   </header>
 
   <!-- Intro Section -->
   <section class="intro" data-aos="fade-up">
-    <h2>Track Your Complaints with Ease</h2>
-    <p>No more standing in long queues or repeated visits to Nagar Nigam offices. Just enter your complaint number and track its status live. Empowering citizens with transparency and real-time updates.</p>
+    <h2 data-i18n="track">Track Your Complaints with Ease</h2>
+    <p data-i18n="comp_no">No more standing in long queues or repeated visits to Nagar Nigam offices. Just enter your complaint number and track its status live. Empowering citizens with transparency and real-time updates.</p>
   </section>
 
   <!-- Track Complaint Section -->
   <div class="track-section" data-aos="zoom-in">
     <div class="track-header">
-      <h2>Complaint Progress</h2>
+      <h2 data-i18n="progress">Complaint Progress</h2>
     </div>
     <div class="complaint-info">
-      <p><strong>Complaint No:</strong> NGN23456</p>
-      <p><strong>Filed On:</strong> 10 May 2025</p>
-      <p><strong>Issue:</strong> Garbage not collected in Sector 5</p>
+      <p  data-i18n="comp_no1"><strong>Complaint No:</strong> NGN23456</p>
+      <p  data-i18n="date"><strong>Filed On:</strong> 10 May 2025</p>
+      <p  data-i18n="issue1"><strong>Issue:</strong> Garbage not collected in Sector 5</p>
     </div>
 
     <div class="timeline">
       <div class="step completed">
         <div class="circle">1</div>
-        <p>Submitted</p>
+        <p  data-i18n="submit1">Submitted</p>
       </div>
       <div class="step completed">
         <div class="circle">2</div>
-        <p>Verified</p>
+        <p  data-i18n="verified">Verified</p>
       </div>
       <div class="step active">
         <div class="circle">3</div>
-        <p>Assigned</p>
+        <p  data-i18n="assign">Assigned</p>
       </div>
       <div class="step">
         <div class="circle">4</div>
-        <p>In Progress</p>
+        <p  data-i18n="progress1">In Progress</p>
       </div>
       <div class="step">
         <div class="circle">5</div>
-        <p>Resolved</p>
+        <p  data-i18n="resolve">Resolved</p>
       </div>
     </div>
   </div>
@@ -255,26 +264,26 @@
   <!-- Information Cards -->
   <section class="cards-container" data-aos="fade-up">
     <div class="card">
-      <h3>Complaint Guidelines</h3>
-      <p>Ensure your complaint includes a clear description, photo (if applicable), and accurate location to enable faster verification and resolution.</p>
+      <h3  data-i18n="comp_guide">Complaint Guidelines</h3>
+      <p  data-i18n="description1">Ensure your complaint includes a clear description, photo (if applicable), and accurate location to enable faster verification and resolution.</p>
     </div>
     <div class="card">
-      <h3>Support & Helpline</h3>
-      <p>If your complaint is delayed or misrouted, call our 24/7 support number: <strong>1800-123-4567</strong> or email us at help@nagarcomplaints.gov.in.</p>
+      <h3  data-i18n="supp_help">Support & Helpline</h3>
+      <p  data-i18n="deployed">If your complaint is delayed or misrouted, call our 24/7 support number: <strong>1800-123-4567</strong> or email us at help@nagarcomplaints.gov.in.</p>
     </div>
     <div class="card">
-      <h3>Citizen Grievance Policy</h3>
-      <p>We are committed to resolving every complaint within 7 working days. Your feedback helps us improve the city’s services and response quality.</p>
+      <h3  data-i18n="policy">Citizen Grievance Policy</h3>
+      <p  data-i18n="resolved_comp">We are committed to resolving every complaint within 7 working days. Your feedback helps us improve the city’s services and response quality.</p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer  data-i18n="foo">
     &copy; 2025 Nagar Nigam Complaint Tracker. All rights reserved. | Developed by Tech Challengers
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ duration: 1000 });</script>
-
+<script src="script.js"></script>
 </body>
 </html>
