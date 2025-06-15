@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register Complaint - Nagar Nigam Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #080c7f, #56014a);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 { margin-bottom: 5px; }
+    nav { margin-top: 10px; }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .form-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .form-container h2 {
+      text-align: center;
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #333;
+    }
+    form input[type="text"],
+    form input[type="tel"],
+    form input[type="file"],
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    form textarea { resize: vertical; }
+    form button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background-color: #0077b6;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover { background-color: #023e8a; }
+    footer {
+      background-color: #03045e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 80px;
+    }
+    @media (max-width: 600px) {
+      .form-container {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+    /* Success message styling */
+    #successMessage {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <h1>Nagar Nigam Complaint Tracker</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="Complain.html">Register Complaint</a>
+      <a href="Trackcomplain.html">Track Status</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Complaint Form -->
+  <div class="form-container" data-aos="fade-up">
+    <h2>Register Your Complaint</h2>
+    <form id="complaintForm" novalidate>
+      <label for="name">Full Name:</label>
+      <input type="text" name="name" id="name" required />
+
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" name="mobile" id="mobile" pattern="[0-9]{10}" required />
+
+      <label for="address">Address:</label>
+      <input type="text" name="address" id="address" required />
+
+      <label for="issue">Issue Type:</label>
+      <select name="issue" id="issue" required>
+        <option value="">Select</option>
+        <option value="garbage">Garbage Collection</option>
+        <option value="sewage">Sewage Problem</option>
+        <option value="streetlight">Street Light Not Working</option>
+        <option value="road">Road Damage</option>
+        <option value="water">Water Supply Issue</option>
+      </select>
+
+      <label for="description">Description:</label>
+      <textarea name="description" id="description" rows="4" required></textarea>
+
+      <label for="photo">Upload Photo (optional):</label>
+      <input type="file" name="photo" id="photo" accept="image/*" />
+
+      <label for="location">Coordinates (Latitude, Longitude):</label>
+      <input type="text" name="location" id="location" placeholder="e.g., 28.6139, 77.2090" />
+
+      <button type="submit">Submit Complaint</button>
+    </form>
+
+    <div id="successMessage"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Nagar Nigam Complaint Tracker. All rights reserved. | Developed by Tech Challengers
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    function generateComplaintNumber() {
+   
+      return Math.floor(100000 + Math.random() * 900000);
+    }
+
+    document.getElementById('complaintForm').addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      const form = event.target;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const location = form.location.value.trim();
+      if (location !== '') {
+        const coordsPattern = /^-?\d+(\.\d+)?,\s*-?\d+(\.\d+)?$/;
+        if (!coordsPattern.test(location)) {
+          alert('Please enter coordinates in correct format: "latitude, longitude" (e.g., 28.6139, 77.2090)');
+          form.location.focus();
+          return;
+        }
+      }
+
+   
+      const complaintNumber = generateComplaintNumber();
+
+  
+      const successDiv = document.getElementById('successMessage');
+      successDiv.style.display = 'block';
+      successDiv.innerHTML = `
+        ✅ Your complaint has been successfully registered.<br />
+        Your Complaint Number is: <strong>CMP${complaintNumber}</strong><br />
+        Please save this number for future reference.
+      `;
+
+      form.reset();
+      successDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
